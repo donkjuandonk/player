@@ -73,7 +73,6 @@ export default {
 
     if (format === "html") {
       const players = results.map(r => `<h3>${r.source}</h3><iframe src="${r.iframe}" width="100%" height="480" allowfullscreen></iframe>`).join("<hr>");
-      const notice = `<div style="position: absolute !important;top:0px;left: 0px !important;right:0;padding:10px;text-align:center;background: url('https://idxxi.buzz/wp-content/themes/indoxxi-new/images/mask-title.png') center top repeat-x !important;color:white;font-weight:bold;z-index:9999;font-family:sans-serif;transform: none !important;height: auto !important;width: 100% !important;">Pasang 1.1.1.1 VPN Agar muncul Sub Indo</div>`;
       return new Response(`<!DOCTYPE html><html><head><title>${title}</title>
   <style>
     html, body {
@@ -92,8 +91,25 @@ export default {
       width: 100%;
       height: 100%;
     }
+    .notice {
+    position: absolute !important;
+    top: 0px;
+    left: 0px !important;
+    right: 0;
+    padding: 10px;
+    text-align: center;
+    background: url('https://idxxi.buzz/wp-content/themes/indoxxi-new/images/mask-title.png') center top repeat-x !important;
+    color: white;
+    font-weight: bold;
+    z-index: 9999;
+    font-family: sans-serif;
+    height: auto !important;
+    width: 100% !important;
+  }
   </style>
-</head><body>${players} <script>
+</head><body>
+<div class="notice">Pasang 1.1.1.1 VPN Agar muncul Sub Indo</div>
+${players} <script>
   // Disable right click
   document.addEventListener("contextmenu", event => event.preventDefault());
 
