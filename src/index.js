@@ -48,7 +48,7 @@ export default {
       });
     }
 
-    const playerHtml = \`
+    const playerHtml = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +72,7 @@ export default {
   <iframe src="\${iframeUrl}" allowfullscreen allow="autoplay"></iframe>
 </body>
 </html>
-    \`.trim();
+    `.trim();
 
     return new Response(playerHtml, {
       headers: { "Content-Type": "text/html" }
