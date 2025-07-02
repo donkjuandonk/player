@@ -49,7 +49,7 @@ export default {
       });
     }
 
-    const playerHtml = \`
+    const playerHtml = `
 <!DOCTYPE html>
 <html>
 <head>
