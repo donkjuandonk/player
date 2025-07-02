@@ -38,10 +38,6 @@ export default {
       {
         name: "godriveplayer.com",
         url: `https://godriveplayer.com/player.php?imdb=${imdb}`
-      },
-      {
-        name: "multiembed.mov",
-        url: `https://multiembed.mov/?video_id=${imdb}`
       }
     ];
 
@@ -76,8 +72,9 @@ export default {
     const title = await getTitleFromIMDb(imdb);
 
     if (format === "html") {
-      const players = results.map(r => `<iframe src="${r.iframe}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`).join("<hr>");
-      return new Response(`<!DOCTYPE html><html><head><title>${title}</title>  <meta name="viewport" content="width=device-width, initial-scale=1">
+      const players = results.map(r => `<h3>${r.source}</h3><iframe src="${r.iframe}" width="100%" height="480" allowfullscreen></iframe>`).join("<hr>");
+            const notice = `<div style="position: absolute !important;top:0px;left: 0px !important;right:0;padding:10px;text-align:center;background: url(https://idxxi.buzz/wp-content/themes/indoxxi-new/images/mask-title.png) center top repeat-x !important;color:white;font-weight:bold;z-index:9999;font-family:sans-serif;transform: none !important;height: auto !important;width: 100% !important;">Pasang 1.1.1.1 VPN Agar muncul Sub Indo</div>`;
+      return new Response(`<!DOCTYPE html><html><head><title>${title}</title>
   <style>
     html, body {
       margin: 0;
@@ -95,7 +92,8 @@ export default {
       width: 100%;
       height: 100%;
     }
-  </style></head><body><h1>${title}</h1>${players}</body></html>`, {
+  </style>
+</head><body>${players}</body></html>`, {
         headers: { "content-type": "text/html" }
       });
     }
