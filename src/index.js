@@ -32,22 +32,6 @@ export default {
       {
         name: "multiembed.mov",
         url: `https://multiembed.mov/?video_id=${imdb}`
-      },
-      {
-        name: "doodstream (stub)",
-        url: `https://dood.yt/e/${imdb}` // Placeholder - requires mapping
-      },
-      {
-        name: "streamtape (stub)",
-        url: `https://streamtape.com/e/${imdb}` // Placeholder - requires mapping
-      },
-      {
-        name: "mixdrop (stub)",
-        url: `https://mixdrop.co/f/${imdb}` // Placeholder - requires mapping
-      },
-      {
-        name: "voe (stub)",
-        url: `https://voe.sx/e/${imdb}` // Placeholder - requires mapping
       }
     ];
 
