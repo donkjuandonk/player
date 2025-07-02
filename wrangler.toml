@@ -1,0 +1,6 @@
+name = "vidsrc-multihost-player"
+type = "javascript"
+account_id = "11d525b2730b62c56269851eaaa16cb4"
+workers_dev = true
+compatibility_date = "2025-07-02"
+main = "index.js"
