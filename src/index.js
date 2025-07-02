@@ -76,8 +76,26 @@ export default {
     const title = await getTitleFromIMDb(imdb);
 
     if (format === "html") {
-      const players = results.map(r => `<iframe src="${r.iframe}" width="100%" height="100%" allowfullscreen></iframe>`).join("<hr>");
-      return new Response(`<!DOCTYPE html><html><head><title>${title}</title></head><body><h1>${title}</h1>${players}</body></html>`, {
+      const players = results.map(r => `<iframe src="${r.iframe}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`).join("<hr>");
+      return new Response(`<!DOCTYPE html><html><head><title>${title}</title>  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: black;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+  </style></head><body><h1>${title}</h1>${players}</body></html>`, {
         headers: { "content-type": "text/html" }
       });
     }
