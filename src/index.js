@@ -13,6 +13,16 @@ export default {
       });
     }
 
+    async function getTitleFromIMDb(imdbID) {
+      try {
+        const res = await fetch(`https://www.omdbapi.com/?apikey=4a3b711b&i=${imdbID}`);
+        const data = await res.json();
+        return data.Title || imdbID;
+      } catch {
+        return imdbID;
+      }
+    }
+
     function extractIframeSrc(html) {
       const match = html.match(/<iframe[^>]+src=["']([^"']+)["']/);
       return match ? match[1] : null;
@@ -63,14 +73,16 @@ export default {
       }
     }
 
+    const title = await getTitleFromIMDb(imdb);
+
     if (format === "html") {
-      const players = results.map(r => `<h3>${r.source}</h3><iframe src="${r.iframe}" width="100%" height="480" allowfullscreen></iframe>`).join("<hr>");
-      return new Response(`<!DOCTYPE html><html><head><title>Players</title></head><body>${players}</body></html>`, {
+      const players = results.map(r => `<iframe src="${r.iframe}" width="100%" height="100%" allowfullscreen></iframe>`).join("<hr>");
+      return new Response(`<!DOCTYPE html><html><head><title>${title}</title></head><body><h1>${title}</h1>${players}</body></html>`, {
         headers: { "content-type": "text/html" }
       });
     }
 
-    return new Response(JSON.stringify({ imdb, results }), {
+    return new Response(JSON.stringify({ imdb, title, results }), {
       headers: { "content-type": "application/json" }
     });
   }
