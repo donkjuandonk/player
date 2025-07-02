@@ -9,7 +9,6 @@ export default {
     }
 
     const hosts = [
-      `https://godriveplayer.com/player.php?imdb=${imdb}`,
       `https://vidsrc.net/embed/movie?imdb=${imdb}`,
       `https://multiembed.mov/?video_id=${imdb}`
     ];
@@ -49,7 +48,7 @@ export default {
       });
     }
 
-    const playerHtml = `
+    const playerHtml = \`
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +72,7 @@ export default {
   <iframe src="\${iframeUrl}" allowfullscreen allow="autoplay"></iframe>
 </body>
 </html>
-    `.trim();
+    \`.trim();
 
     return new Response(playerHtml, {
       headers: { "Content-Type": "text/html" }
