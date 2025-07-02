@@ -93,7 +93,21 @@ export default {
       height: 100%;
     }
   </style>
-</head><body>${players}</body></html>`, {
+</head><body>${players} <script>
+  // Disable right click
+  document.addEventListener("contextmenu", event => event.preventDefault());
+
+  // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+C
+  document.addEventListener("keydown", function (e) {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "C")) ||
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+    }
+  });
+</script></body></html>`, {
         headers: { "content-type": "text/html" }
       });
     }
